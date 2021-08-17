@@ -51,18 +51,18 @@ export const sendFacebook = function (type, configName){
     var url = this.mountUrl()
     axios.post(url)
     .then(response =>{
-        console.log('works', response);
-      })
-      .catch(error =>{
+      console.log('works', response);
+    })
+    .catch(error =>{
       console.log(error.request);
-      })
+    })
   }
   this.sendPhotoMessage = (message, urlPhoto) => {
     if(!message && !urlPhoto) return;
     var url = this.mountUrl(message, urlPhoto)
     axios.post(url)
     .then(response =>{
-        console.log('works', response);
+        console.log('Send OKs');
       })
       .catch(error =>{
       console.log(error.request);
@@ -72,7 +72,7 @@ export const sendFacebook = function (type, configName){
   this.mountUrl = (message, urlPhoto) => {
     var baseUrl = 'https://graph.facebook.com/v11.0/';
     var url = baseUrl + '/' + this.opts.facebookPageId + '/photos/?';
-    var messageQs = 'message=' + message;
+    var messageQs = 'caption=' + message;
     var accessTokenQs = 'access_token=' + this.opts.facebookAccessToken;
     var urlQs = 'url=' + urlPhoto;
     var publishedQs =  'published=' + this.opts.published;
