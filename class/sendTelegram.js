@@ -11,7 +11,6 @@ export const sendTelegram = function (configName){
   this.construct = () => {
     this.getBotToken();
     this.getChannelId();
-    console.log('movistarlog: 	', this);
   }
   this.getBotToken = () => {
     if (config[this.opts.configName] && config[this.opts.configName].telegramBotToken){
@@ -31,7 +30,7 @@ export const sendTelegram = function (configName){
     var url = this.mountUrl() + message
     axios.get(url)
     .then(response =>{
-      console.log('works', response);
+      console.log('200->SendOK');
     })
     .catch(error =>{
       console.log(error.request);
